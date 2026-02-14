@@ -1,47 +1,196 @@
 body {
   margin: 0;
   height: 100vh;
-  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: Arial, sans-serif;
+  background: linear-gradient(145deg, #ffb6c1 0%, #ffc0cb 40%, #f8d7e3 100%);
+  font-family: 'Poppins', sans-serif;
   overflow: hidden;
+  position: relative; /* for absolute positioning of hearts and container */
 }
 
+/* Floating hearts background */
+.hearts {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hearts::before,
+.hearts::after {
+  content: "❤️";
+  position: absolute;
+  font-size: 2rem;
+  opacity: 0.6;
+  animation: floatHearts 10s linear infinite;
+}
+
+.hearts::before {
+  top: 10%;
+  left: 10%;
+  animation-duration: 14s;
+  animation-delay: -2s;
+}
+
+.hearts::after {
+  top: 70%;
+  right: 15%;
+  font-size: 2.5rem;
+  animation-duration: 18s;
+  animation-delay: -5s;
+}
+
+@keyframes floatHearts {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-100vh) rotate(20deg);
+    opacity: 0;
+  }
+}
+
+/* Center the card absolutely */
 .container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   text-align: center;
-  position: relative;
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(8px);
+  border-radius: 60px 60px 30px 30px;
+  padding: 2rem 3rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1), 0 0 80px rgba(255, 182, 193, 0.5);
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  max-width: 600px;
+  width: fit-content;
+  margin: 0 20px; /* fallback for small screens */
 }
 
 h1 {
-  font-size: 2.5rem;
+  font-family: 'Great Vibes', cursive;
+  font-size: 3rem;
+  color: #a6364e;
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
+  margin-bottom: 20px;
   animation: float 2s ease-in-out infinite;
 }
 
 @keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0px); }
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+#gif {
+  width: 220px;
+  border-radius: 30px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  margin: 15px 0;
+  border: 4px solid white;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin: 30px 0 20px;
+  flex-wrap: wrap;
 }
 
 button {
-  padding: 10px 20px;
-  margin: 20px;
-  font-size: 1.2rem;
+  padding: 14px 40px;
+  font-size: 1.6rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
   border: none;
-  border-radius: 8px;
+  border-radius: 60px;
   cursor: pointer;
-  position: relative;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  letter-spacing: 1px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 150px;
 }
 
 #yesBtn {
-  background-color: #ff4d6d;
+  background: linear-gradient(145deg, #ff4d6d, #ff7b8c);
   color: white;
+  border: 2px solid #fff0f2;
+  animation: pulse 1.8s infinite;
+}
+
+#yesBtn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 25px #ff4d6d, 0 8px 20px rgba(255, 77, 109, 0.4);
+  background: linear-gradient(145deg, #ff3355, #ff6b7f);
 }
 
 #noBtn {
-  background-color: #555;
-  color: white;
+  background: #f0f0f0;
+  color: #a6364e;
+  border: 2px solid #ffb6c1;
+  transition: left 0.3s ease, top 0.3s ease, transform 0.2s;
+  position: relative; /* JS changes to absolute when moving */
+}
+
+#noBtn:hover {
+  background: #ffe4e9;
+  transform: scale(0.95);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(255, 77, 109, 0.7); }
+  70% { box-shadow: 0 0 0 15px rgba(255, 77, 109, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 77, 109, 0); }
+}
+
+#response {
+  font-size: 2rem;
+  margin-top: 25px;
+  font-family: 'Great Vibes', cursive;
+  color: #b13e5c;
+  text-shadow: 1px 1px 3px white;
+  min-height: 80px;
+  font-weight: normal;
+}
+
+/* Add this to style.css to handle the many hearts */
+.hearts {
   position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.heart {
+  position: absolute;
+  font-size: 1.5rem;
+  opacity: 0.7;
+  animation: floatUp 8s linear infinite;
+  color: #ff99aa;
+  user-select: none;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(100vh) rotate(0deg);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-10vh) rotate(20deg);
+    opacity: 0;
+  }
 }

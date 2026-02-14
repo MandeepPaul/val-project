@@ -3,22 +3,27 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Be My Valentine?</title>
+  <title>Be My Valentine? 💖</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
   <div class="container">
-    <h1>Will you be my Valentine? 💖</h1>
-
+    <h1>Bulbul, will you be my Valentine? 💌</h1>
+    <img id="gif" src="happy.gif" alt="Cute gif" />
     <div class="buttons">
-      <button id="yesBtn">Yes 💘</button>
+      <button id="yesBtn">Yes 💖</button>
       <button id="noBtn">No 💔</button>
     </div>
-
     <p id="response"></p>
   </div>
 
+  <!-- Floating hearts container (will be populated by JS) -->
+  <div class="hearts" id="heartsContainer" aria-hidden="true"></div>
+
+  <!-- Confetti library -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1"></script>
   <script src="script.js"></script>
 </body>
 </html>
